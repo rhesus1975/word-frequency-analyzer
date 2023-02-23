@@ -15,4 +15,20 @@ export const analyzeUrl = async (event: any) => {
     };
 }
 
-exports.handler = analyzeUrl;
+exports.handler = async (event: any) => {
+    try {
+        const response = await analyzeUrl(event);
+        return {
+            statusCode: 200,
+            body: JSON.stringify(response)
+        };
+    } catch (error) {
+        console.error(error);
+        return {
+            statusCode: 500,
+            body: JSON.stringify({
+                message: 'Internal server error'
+            })
+        };
+    }
+}
