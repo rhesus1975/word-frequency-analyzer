@@ -1,0 +1,26 @@
+{
+  "name": "word-frequency-analyzer",
+  "version": "1.0.0",
+  "description": "My TypeScript project",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "tsc",
+    "package": "npm ci && npm run build && npm prune --omit=dev && cp -r node_modules dist && zip -qr function.zip dist/*",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.20.11",
+    "@babel/plugin-transform-runtime": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.21.0",
+    "@types/jest": "^29.4.0",
+    "jest": "29.4.3",
+    "node-fetch": "3.3.0",
+    "ts-jest": "29.0.5",
+    "typescript": "4.9.5"
+  }
+}
