@@ -16,6 +16,6 @@ describe('handler', () => {
         map.set('world', 1);
         mockAnalyze.mockReturnValue(map);
         const result = await analyzeUrl({});
-        expect(result).toEqual({ result: JSON.stringify(map)});
+        expect(result).toEqual({ result: Object.fromEntries(map.entries())});
     });
 });

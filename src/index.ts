@@ -7,11 +7,12 @@ export const analyzeUrl = async (event: any) => {
     const count = Number(event.count) || 50;
 
     const fileContents = await getFileContents(url);
+    console.info(`retrieved ${url} data successfully!`);
     const results = analyzeTextFrequency(fileContents);
     console.info(`results returned ${results.size}`);
 
     return {
-        result: JSON.stringify(new Map([...results].slice(0, count)))
+        result: Object.fromEntries([...results].slice(0, count))
     };
 }
 
@@ -20,15 +21,15 @@ exports.handler = async (event: any) => {
         const response = await analyzeUrl(event);
         return {
             statusCode: 200,
-            body: JSON.stringify(response)
+            body: response
         };
     } catch (error) {
         console.error(error);
         return {
             statusCode: 500,
-            body: JSON.stringify({
+            body: {
                 message: 'Internal server error'
-            })
+            }
         };
     }
 }
