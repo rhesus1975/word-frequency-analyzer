@@ -8,8 +8,11 @@ export const analyzeUrl = async (event: any) => {
 
     const fileContents = await getFileContents(url);
     const results = analyzeTextFrequency(fileContents);
+    console.info(`results returned ${results.size}`);
 
-    return new Map([...results].slice(0, count));
+    return {
+        result: JSON.stringify(new Map([...results].slice(0, count)))
+    };
 }
 
 exports.handler = analyzeUrl;

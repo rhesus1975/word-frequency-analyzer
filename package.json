@@ -1,13 +1,13 @@
 {
   "name": "word-frequency-analyzer",
   "version": "1.0.0",
-  "description": "My TypeScript project",
+  "description": "analyze word frequency from a url - default to Moby Dick",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "clean": "rm -rf dist",
     "build": "tsc",
-    "package": "npm ci && npm run build && npm prune --omit=dev && cp -r node_modules dist && zip -qr function.zip dist/*",
+    "package": "npm ci && npm run build && npm prune --omit=dev && cp -r node_modules dist/. && cd dist && zip -qr ../function.zip *",
     "test": "jest"
   },
   "devDependencies": {
